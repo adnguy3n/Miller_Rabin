@@ -11,7 +11,7 @@ import (
  * 500,000 and 1,000,000 are probably prime.
  */
 func main() {
-	//Checks from 500,001 and 999,999 as all Prime Numbers, save for 2, are odd.
+	// Checks from 500,001 and 999,999 as all Prime Numbers, save for 2, are odd.
 	start := 500001
 	end := 999999
 
@@ -21,6 +21,7 @@ func main() {
 	//fmt.Println(res)
 	fmt.Println(len(res))
 
+	// Runs the same calculations but uses Golang's implementation of Miller Rabin.
 	res2 := getProbablePrimes(start, end, []int{})
 	fmt.Println(len(res2))
 }
