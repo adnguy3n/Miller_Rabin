@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/big"
 	"math/rand"
 )
 
@@ -16,6 +17,12 @@ func main() {
 
 	res := getPrimes(start, end, []int{})
 	printResult(res)
+	fmt.Println("/***********************************************************/")
+	//fmt.Println(res)
+	fmt.Println(len(res))
+
+	res2 := getProbablePrimes(start, end, []int{})
+	fmt.Println(len(res2))
 }
 
 /*
@@ -90,6 +97,24 @@ func powMod(base, exp, mod int) int {
 
 		exp = exp / 2
 		base = (base * base) % mod
+	}
+
+	return res
+}
+
+/*
+ * Performs the Miller Rabin algorithmn on integers in range (start, end).
+ * Appends the number to an array if the number is probably prime.
+ * Uses the Golang's implementation of the Miller Rabin algorithm in math/big.
+ * Used to compare with the above implementation of the Miller Rabin Algorithm.
+ */
+func getProbablePrimes(start, end int, res []int) []int {
+	if big.NewInt(int64(start)).ProbablyPrime(40) {
+		res = append(res, start)
+	}
+
+	if start < end {
+		res = getPrimes(start+1, end, res)
 	}
 
 	return res
