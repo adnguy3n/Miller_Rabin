@@ -85,7 +85,8 @@ func millerRabin(num int) bool {
 }
 
 /*
- * Modular Exponentation function.
+ * Modular Exponentiation function so larger numbers can be checked
+ * more efficiently or be even checked to begin with.
  */
 func powMod(base, exp, mod int) int {
 	res := 1
