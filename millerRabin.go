@@ -116,7 +116,7 @@ func getProbablePrimes(start, end int, res []int) []int {
 	}
 
 	if start < end {
-		res = getPrimes(start+1, end, res)
+		res = getProbablePrimes(start+1, end, res)
 	}
 
 	return res
